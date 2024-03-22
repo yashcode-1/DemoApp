@@ -1,0 +1,68 @@
+﻿@model DemoApplication.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>User</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EmailId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.EmailId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DateOfBirth)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <p>
+                <a href="@Url.Action("Edit", new { id = Model.UserId })" class="btn btn-info">Edit</a>
+                <a href="@Url.Action("Index")" class="btn btn-default">Back to List</a>
+            </p>
+        </div>
+    </div>
+</div>

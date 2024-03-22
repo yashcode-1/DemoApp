@@ -1,0 +1,103 @@
+﻿@model IEnumerable<DemoApplication.Models.User>
+
+@{
+    ViewBag.Title = "User Details";
+}
+
+<h2>User Details</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <label for="searchField">Search Field:</label>
+        <select id="searchField" class="form-control">
+            <option value="FirstName">First Name</option>
+            <option value="LastName">Last Name</option>
+            <option value="EmailId">Email</option>
+            <option value="Address">Address</option>
+        </select>
+    </div>
+    <div class="col-md-8">
+        <label for="searchQuery">Search Query:</label>
+        <div class="input-group">
+            <input type="text" id="searchQuery" class="form-control" />
+            <div class="input-group-append">
+                <button class="btn btn-primary" id="searchButton" type="button">Search</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.UserId }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.UserId }, new { @class = "btn btn-secondary" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.UserId }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section scripts {
+    <script>
+        @*$(document).ready(function () {
+            $('#searchButton').click(function () {
+                var searchField = $('#searchField').val();
+                var searchQuery = $('#searchQuery').val();
+                window.location.href = '/Home/Search?field=' + searchField + '&query=' + searchQuery;
+            });
+        });*@
+        jQuery(document).ready(function ($) {
+            $('#searchButton').click(function () {
+                var searchField = $('#searchField').val();
+                var searchQuery = $('#searchQuery').val();
+                window.location.href = '/Home/Search?field=' + searchField + '&query=' + searchQuery;
+            });
+        });
+    </script>
+
+}
